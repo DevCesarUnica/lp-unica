@@ -24,12 +24,12 @@ export const POLICY_URLS = {
 } as const;
 
 export const mainNav: NavItem[] = [
-  { label: 'Home', href: '/' },
+  { label: 'Home', href: '/#parceirounica' },
   { label: 'Produtos', href: '/#produtos' },
   { label: 'Bancos Parceiros', href: '/#parceiros' },
   { label: 'Blog', href: '/#blog' },
   { label: 'Trabalhe Conosco', href: TRABALHE_CONOSCO_URL, external: true },
-  { label: 'Contato', href: '/#parceirounica' },
+  { label: 'Contato', href: '/' },
 ];
 
 export const socialLinks: SocialLink[] = [
