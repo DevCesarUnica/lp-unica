@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Exo Soft: fonte real usada em títulos/botões/nav do site original (não é Google Fonts —
+   self-hosted, extraída de unicapromotora.com.br/wp-content/uploads/2023/11/ExoSoft-*.ttf) */
+@font-face {
+  font-family: 'Exo Soft';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('../assets/fonts/ExoSoft-Thin.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Exo Soft';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/ExoSoft-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Exo Soft';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/ExoSoft-Bold.ttf') format('truetype');
+}
+
+:root {
+  --color-primary: #d5040c;
+  --color-secondary: #373435;
+  --color-accent: #2575fc;
+  --header-height: 122px;
+  --header-height-scrolled: 96px;
+}
+
+@layer base {
+  * {
+    @apply border-surface-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    @apply font-body text-secondary text-base antialiased bg-white overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold text-secondary;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-secondary;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-white rounded-sm;
+  }
+}
+
+@layer components {
+  .container-app {
+    @apply mx-auto max-w-8xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-section-sm md:py-section;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs md:text-sm font-heading font-bold uppercase tracking-[0.2em] text-primary mb-3;
+  }
+
+  .heading-xl {
+    @apply text-5xl md:text-6xl lg:text-7xl font-heading font-light leading-[1.05] tracking-tight;
+  }
+
+  .heading-lg {
+    @apply text-4xl md:text-5xl lg:text-6xl font-heading font-light leading-[1.1] tracking-tight;
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-3xl font-heading font-bold leading-tight;
+  }
+
+  .heading-thin {
+    @apply font-heading font-light leading-[1.08] tracking-tight;
+  }
+
+  .body-lg {
+    @apply text-lg md:text-xl text-secondary-400 leading-relaxed;
+  }
+
+  .card-surface {
+    @apply bg-white rounded-lg border border-surface-border shadow-soft;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:left-0 after:-bottom-0.5 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+}
