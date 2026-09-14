@@ -3,6 +3,8 @@ import { Header } from './Header';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
 import { WhatsappButton } from './WhatsappButton';
+import { AnecPopup } from './AnecPopup';
+import { CookieConsent } from './CookieConsent';
 
 export function Layout() {
   return (
@@ -14,6 +16,8 @@ export function Layout() {
       </main>
       <Footer />
       <WhatsappButton />
+      <AnecPopup />
+      <CookieConsent />
     </div>
   );
 }
