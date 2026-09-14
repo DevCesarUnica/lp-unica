@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+public/api/leads.csv
+public/api/ouvidoria.csv
+public/api/denuncie.csv
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,41 +1,36 @@
-import { api } from './api';
 import type { LeadFormData, ContactFormData, OuvidoriaFormData, DenuncieFormData } from '../utils/schemas';
 
-// No backend is deployed for this demo, so network failures are swallowed and
-// treated as success — forms behave as they would once a real API exists.
-
-export async function submitLead(data: LeadFormData): Promise<{ success: boolean }> {
+// Cada formulário é persistido por um script PHP hospedado junto com o site
+// estático na Hostgator (public/api/*.php). LeadForm e ContatoForm gravam na
+// mesma planilha (public/api/leads.csv, coluna "origem" diferencia); Ouvidoria
+// e Denuncie têm suas próprias planilhas por serem canais de compliance.
+// Caminho relativo (mesma origem) em vez de um backend externo.
+async function postToPhp(endpoint: string, data: unknown): Promise<{ success: boolean }> {
   try {
-    await api.post('/leads', data);
-    return { success: true };
+    const response = await fetch(`/api/${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    return { success: Boolean(result?.success) };
   } catch {
-    return { success: true };
+    return { success: false };
   }
 }
 
-export async function submitContact(data: ContactFormData): Promise<{ success: boolean }> {
-  try {
-    await api.post('/contact', data);
-    return { success: true };
-  } catch {
-    return { success: true };
-  }
+export function submitLead(data: LeadFormData): Promise<{ success: boolean }> {
+  return postToPhp('leads.php', data);
 }
 
-export async function submitOuvidoria(data: OuvidoriaFormData): Promise<{ success: boolean }> {
-  try {
-    await api.post('/ouvidoria', data);
-    return { success: true };
-  } catch {
-    return { success: true };
-  }
+export function submitContact(data: ContactFormData): Promise<{ success: boolean }> {
+  return postToPhp('contact.php', data);
 }
 
-export async function submitDenuncia(data: DenuncieFormData): Promise<{ success: boolean }> {
-  try {
-    await api.post('/denuncie', data);
-    return { success: true };
-  } catch {
-    return { success: true };
-  }
+export function submitOuvidoria(data: OuvidoriaFormData): Promise<{ success: boolean }> {
+  return postToPhp('ouvidoria.php', data);
+}
+
+export function submitDenuncia(data: DenuncieFormData): Promise<{ success: boolean }> {
+  return postToPhp('denuncie.php', data);
 }
