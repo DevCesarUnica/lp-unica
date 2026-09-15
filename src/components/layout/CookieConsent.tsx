@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown, Settings2, X } from 'lucide-react';
+import { ChevronDown, Cookie, X } from 'lucide-react';
 import { POLICY_URLS } from '../../data/navigation';
 import { cn } from '../../utils/cn';
 import logo from '../../assets/images/cropped-unica-favicon.png';
@@ -226,14 +226,19 @@ export function CookieConsent() {
       </AnimatePresence>
 
       {!isOpen && hasConsent && (
-        <button
+        <motion.button
           type="button"
           onClick={() => setIsOpen(true)}
           aria-label="Gerenciar o consentimento de cookies"
-          className="fixed bottom-4 left-4 z-[110] flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-white shadow-card hover:bg-secondary-600"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.95 }}
+          className="fixed bottom-6 right-6 z-[110] flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary shadow-card ring-1 ring-surface-border transition-colors hover:bg-primary hover:text-white"
         >
-          <Settings2 size={18} />
-        </button>
+          <Cookie size={22} />
+        </motion.button>
       )}
     </>
   );
