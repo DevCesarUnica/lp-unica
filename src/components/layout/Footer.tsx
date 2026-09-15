@@ -4,14 +4,14 @@ import { Container } from '../ui/Container';
 import { footerColumns } from '../../data/footer';
 import { companyInfo } from '../../data/company';
 import { socialLinks } from '../../data/navigation';
-import logoCompleta from '../../assets/images/Logo-unica-completa.svg';
+import logoBranca from '../../assets/images/logo-unica-branca.png';
 
 export function Footer() {
   return (
     <footer id="contato" className="scroll-mt-32 bg-black text-white">
       <Container className="grid grid-cols-1 gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <img src={logoCompleta} alt="Única Promotora" className="h-14 w-auto" width={281} height={87} />
+          <img src={logoBranca} alt="Única Promotora" className="h-24 w-auto" width={880} height={890} />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/70">
             Utilizamos nossa experiência e conhecimento diariamente para oferecer a solução mais eficaz{' '}
             <strong className="font-bold text-white">para você.</strong>

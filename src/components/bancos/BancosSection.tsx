@@ -1,11 +1,17 @@
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
-import { partnerBanks } from '../../data/banks';
 import { Container } from '../ui/Container';
+import { BancoCard } from './BancoCard';
+import { BancoModal } from './BancoModal';
+import { bancos } from '../../data/bancos';
+import type { Banco } from '../../types/banco';
 
-export function PartnersMarquee() {
+export function BancosSection() {
+  const [selected, setSelected] = useState<Banco | null>(null);
+
   return (
     <section id="parceiros" className="scroll-mt-32 bg-black pb-[80px] pt-[100px] md:py-[80px]">
       <Container>
@@ -31,18 +37,15 @@ export function PartnersMarquee() {
           allowTouchMove={false}
           className="!h-24 !px-8"
         >
-          {[...partnerBanks, ...partnerBanks].map((bank, index) => (
-            <SwiperSlide key={`${bank.name}-${index}`} className="!flex !h-24 !w-auto items-center justify-center">
-              <img
-                src={bank.logo}
-                alt={bank.name}
-                loading="lazy"
-                className="max-h-16 w-auto max-w-[180px] object-contain opacity-90"
-              />
+          {[...bancos, ...bancos].map((banco, index) => (
+            <SwiperSlide key={`${banco.id}-${index}`} className="!flex !h-24 !w-auto items-center justify-center">
+              <BancoCard banco={banco} onSelect={setSelected} />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
+
+      <BancoModal banco={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }

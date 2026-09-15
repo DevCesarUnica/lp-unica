@@ -16,42 +16,58 @@ export function MissionVisionValues() {
         <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-transparent to-transparent md:hidden" />
       </div>
 
-      {/* elementor-element-b1d1318: padding 170px/150px desktop, 80px/80px mobile.
-          Headings cde0e0a "União," (96.23px/90px, weight 700) + 8b9a6c0 "transformação
-          e inovação." (mesma métrica, weight 100). Icon-box: título 32.858px/700 Exo 2,
-          descrição 17.86px/400 Montserrat, ambos brancos, sem ícone/card. */}
-      <Container className="relative pb-[80px] pt-[80px] md:pb-[150px] md:pt-[170px]">
-        <div className="max-w-2xl">
-          <h2 className="font-heading leading-[36px] tracking-tight text-white md:leading-[90px]">
-            <span className="relative inline-block pl-5 text-[40px] font-bold md:text-[96px]">
+      {/* elementor-element-b1d1318: padding 170px/150px desktop, 80px/80px mobile — preservado
+          até md. A partir de lg (>=1024px) o padding e a tipografia são compactados e
+          Missão/Visão/Valores passam de pilha vertical pra grid, pra a seção caber inteira
+          em 1920x1080 sem scroll. */}
+      <Container className="relative pb-[80px] pt-[80px] md:pb-[150px] md:pt-[170px] lg:py-20">
+        <div className="max-w-2xl lg:max-w-none">
+          <h2 className="font-heading leading-[36px] tracking-tight text-white md:leading-[90px] lg:text-[60px] lg:leading-[1.05]">
+            <span className="relative inline-block pl-5 text-[40px] font-bold md:text-[96px] lg:text-[60px]">
               <span className="absolute left-0 top-1.5 h-[0.8em] w-1 bg-primary" aria-hidden="true" />
               União,
             </span>
             <br />
-            <span className="text-[40px] font-thin text-white md:text-[96px]">transformação</span>
+            <span className="text-[40px] font-thin text-white md:text-[96px] lg:text-[60px]">transformação</span>
             <br />
-            <span className="text-[40px] font-thin text-white md:text-[96px]">e inovação.</span>
+            <span className="text-[40px] font-thin text-white md:text-[96px] lg:text-[60px]">e inovação.</span>
           </h2>
 
-          <div className="mt-12 space-y-10 md:w-[60%]">
-            <div>
-              <h3 className="font-heading text-[32.858px] font-bold text-white">Missão</h3>
-              <p className="mt-3 font-brand text-[17.86px] leading-relaxed text-white/90">{mission}</p>
-            </div>
+          <div className="mt-12 space-y-10 md:w-[60%] lg:mt-10 lg:w-[55%] lg:space-y-0">
+            <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-8">
+              <div>
+                <h3 className="font-heading text-[32.858px] font-bold text-white lg:text-xl">Missão</h3>
+                <p className="mt-3 font-brand text-[17.86px] leading-relaxed text-white/90 lg:mt-2.5 lg:text-[15px]">
+                  {mission}
+                </p>
+              </div>
 
-            <div>
-              <h3 className="font-heading text-[32.858px] font-bold text-white">Visão</h3>
-              <p className="mt-3 font-brand text-[17.86px] leading-relaxed text-white/90">{vision}</p>
-            </div>
+              <div>
+                <h3 className="font-heading text-[32.858px] font-bold text-white lg:text-xl">Visão</h3>
+                <p className="mt-3 font-brand text-[17.86px] leading-relaxed text-white/90 lg:mt-2.5 lg:text-[15px]">
+                  {vision}
+                </p>
+              </div>
 
-            <div>
-              <h3 className="font-heading text-[32.858px] font-bold text-white">Valores</h3>
-              <div className="mt-3 space-y-3 font-brand text-[17.86px] leading-relaxed text-white/90">
-                {values.map((value) => (
-                  <p key={value.title}>
-                    <strong className="font-semibold text-white">{value.title}</strong> {value.description}
-                  </p>
-                ))}
+              <div className="lg:col-span-2">
+                <h3 className="font-heading text-[32.858px] font-bold text-white lg:text-xl">Valores</h3>
+                <div className="mt-3 space-y-3 font-brand text-[17.86px] leading-relaxed text-white/90 lg:mt-4 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:gap-y-4 lg:space-y-0">
+                  {values.map((value) => {
+                    const Icon = value.icon;
+                    return (
+                      <p key={value.title} className="lg:flex lg:items-start lg:gap-2.5 lg:text-[14px] lg:leading-snug">
+                        <Icon
+                          size={16}
+                          className="hidden shrink-0 text-primary lg:mt-0.5 lg:block"
+                          aria-hidden="true"
+                        />
+                        <span>
+                          <strong className="font-semibold text-white">{value.title}</strong> {value.description}
+                        </span>
+                      </p>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
