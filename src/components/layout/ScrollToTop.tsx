@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
- * - Sem hash: volta ao topo a cada mudança de rota — exceto na Home, que deve abrir
- *   já no formulário (`#lead-form`), sem mostrar a faixa vermelha do topo.
+ * - Sem hash: volta ao topo a cada mudança de rota, incluindo a Home.
  * - Com hash: espera a seção alvo existir (páginas são lazy), rola até ela
  *   descontando a altura do header fixo, e reajusta enquanto o layout muda
  *   (imagens, carrosséis e a fonte web que só troca depois).
@@ -12,12 +11,12 @@ export function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    if (!hash && pathname !== '/') {
+    if (!hash) {
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
       return;
     }
 
-    const id = hash ? decodeURIComponent(hash.replace('#', '')) : 'lead-form';
+    const id = decodeURIComponent(hash.replace('#', ''));
     let cancelled = false;
     let ro: ResizeObserver | null = null;
     let settleTimer = 0;

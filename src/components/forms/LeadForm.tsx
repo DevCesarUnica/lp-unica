@@ -47,7 +47,10 @@ const labelCls = 'font-heading text-[22px] font-bold leading-[48px] text-white';
 // .elementor-field-group .elementor-field: bg #373435, border-bottom 1px #4D4D4D, texto branco
 const controlCls =
   'w-full min-w-0 max-w-full border-0 border-b border-[#4D4D4D] bg-transparent px-[14px] py-[5px] text-[10px] text-white placeholder:text-white/60 focus:border-white focus:outline-none focus:ring-0';
-const errorCls = 'text-xs text-primary-200';
+// altura fixa (não min-h): garante que todas as colunas do grid tenham a mesma altura total
+// mesmo quando a mensagem de erro varia de 1 para 2 linhas, evitando desalinhar os inputs
+// entre si (o grid usa `md:items-end`, então uma coluna mais baixa "afunda" em relação às outras).
+const errorCls = 'block h-8 overflow-hidden text-xs leading-tight text-primary-200';
 
 export function LeadForm() {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -109,7 +112,9 @@ export function LeadForm() {
             Nome
           </label>
           <input id="lead-nome" className={controlCls} placeholder="Seu nome ..." {...register('name')} />
-          {errors.name && <span className={errorCls}>{errors.name.message}</span>}
+          <span className={errorCls} aria-live="polite">
+            {errors.name?.message}
+          </span>
         </div>
 
         <Controller
@@ -128,7 +133,9 @@ export function LeadForm() {
                 value={field.value}
                 onChange={(event) => field.onChange(maskPhone(event.target.value))}
               />
-              {errors.phone && <span className={errorCls}>{errors.phone.message}</span>}
+              <span className={errorCls} aria-live="polite">
+                {errors.phone?.message}
+              </span>
             </div>
           )}
         />
@@ -144,7 +151,9 @@ export function LeadForm() {
             placeholder="Seu email ..."
             {...register('email')}
           />
-          {errors.email && <span className={errorCls}>{errors.email.message}</span>}
+          <span className={errorCls} aria-live="polite">
+            {errors.email?.message}
+          </span>
         </div>
 
         <div className={fieldWrap}>
@@ -157,7 +166,9 @@ export function LeadForm() {
             placeholder="Sua cidade ..."
             {...register('city')}
           />
-          {errors.city && <span className={errorCls}>{errors.city.message}</span>}
+          <span className={errorCls} aria-live="polite">
+            {errors.city?.message}
+          </span>
         </div>
 
         <Controller
@@ -186,7 +197,9 @@ export function LeadForm() {
                 </select>
                 <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-white/60">▾</span>
               </div>
-              {errors.state && <span className={errorCls}>{errors.state.message}</span>}
+              <span className={errorCls} aria-live="polite">
+                {errors.state?.message}
+              </span>
             </div>
           )}
         />

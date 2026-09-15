@@ -18,8 +18,7 @@ export function Header() {
   return (
     <>
       {/* A faixa vermelha rola normalmente com a página — só a barra escura (logo+menu)
-          fica fixa. Assim, ao entrar direto no formulário (ver ScrollToTop), a faixa
-          vermelha já fica para trás, fora da tela. */}
+          fica fixa. */}
       <TopBar />
       <header className="sticky top-0 z-50">
         <div

@@ -3,6 +3,7 @@ import { Hero } from '../components/sections/Hero';
 import { PartnersMarquee } from '../components/sections/PartnersMarquee';
 import { MissionVisionValues } from '../components/sections/MissionVisionValues';
 import { UnicaShorts } from '../components/sections/UnicaShorts';
+import { NossoSistema } from '../components/sections/NossoSistema';
 import { ProductsSection } from '../components/sections/ProductsSection';
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <PartnersMarquee />
       <MissionVisionValues />
       <UnicaShorts />
+      <NossoSistema />
       <ProductsSection />
     </>
   );

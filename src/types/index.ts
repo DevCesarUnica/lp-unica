@@ -24,6 +24,27 @@ export interface Product {
   highlights: string[];
 }
 
+export interface ProductCategory {
+  slug: string;
+  title: string;
+  icon: IconComponent;
+  items: string[];
+  className?: string;
+  badgePosition?: 'top' | 'bottom';
+}
+
+export interface SystemTool {
+  slug: string;
+  name: string;
+  description: string;
+  href: string;
+}
+
+export interface SystemBrand {
+  slug: string;
+  name: string;
+}
+
 export interface PartnerBank {
   name: string;
   logo: string;
