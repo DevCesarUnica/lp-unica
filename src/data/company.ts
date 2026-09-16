@@ -44,5 +44,5 @@ export const companyInfo = {
   phoneRaw: '+553121165020',
   dpo: 'Karla Josiane Teodoro',
   mapsUrl: 'https://maps.google.com/?q=%C3%9Anica+Promotora,+R.+Rio+de+Janeiro,+600,+Belo+Horizonte+-+MG',
-  copyright: '© Copyright 2024 – Única Promotora | Developed by Leads4you & Mepo.',
+  copyright: '© Copyright 2026 – Única Promotora | Developed by Única Tech.',
 };
