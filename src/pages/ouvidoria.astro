@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { OuvidoriaHero } from '../components/OuvidoriaHero.tsx';
+import { OuvidoriaContent } from '../components/OuvidoriaContent.tsx';
+---
+
+<BaseLayout
+  title="Ouvidoria"
+  description="Canal de Ouvidoria da Única Promotora para reclamações, sugestões e manifestações dos nossos clientes."
+>
+  <OuvidoriaHero />
+  <OuvidoriaContent client:visible />
+</BaseLayout>

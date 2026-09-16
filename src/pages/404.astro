@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { NotFoundContent } from '../components/NotFoundContent.tsx';
+---
+
+<BaseLayout title="Página não encontrada" description="A página que você procura não existe ou foi movida.">
+  <!-- Sem client:*: só texto, sem nenhuma animação. O Astro serve este arquivo
+       automaticamente pra qualquer rota que não exista, tanto em dev quanto no build. -->
+  <NotFoundContent />
+</BaseLayout>

@@ -1,15 +1,15 @@
 # Única Promotora — Site Institucional
 
-Site institucional da Única Promotora. Front-end estático (React + TypeScript) com persistência de formulários via scripts PHP, hospedado na Hostgator. Substitui a versão anterior em WordPress/Elementor — motivos da troca em [`docs/migracao-wordpress.md`](docs/migracao-wordpress.md).
+Site institucional da Única Promotora. Front-end estático (Astro + React) com persistência de formulários via scripts PHP, hospedado na Hostgator. Substitui a versão anterior em WordPress/Elementor — motivos da troca em [`docs/migracao-wordpress.md`](docs/migracao-wordpress.md).
 
 ## Stack
 
 | Camada | Tecnologia |
 |---|---|
-| Build | Vite 8 |
-| UI | React 19 + TypeScript |
-| Estilos | TailwindCSS 3 (tokens customizados em `tailwind.config.ts`) |
-| Roteamento | React Router DOM v7, lazy loading por rota |
+| Build | Astro 5 (MPA — cada rota gera um HTML estático próprio) |
+| UI interativa | React 19 + TypeScript, hidratada como islands (`client:load`/`client:visible`/`client:idle`) |
+| Estilos | TailwindCSS 3 (tokens customizados em `tailwind.config.mjs`) |
+| Roteamento | Baseado em arquivos (`src/pages/*.astro`), sem router client-side |
 | Animações | Framer Motion |
 | Formulários | React Hook Form + Zod |
 | Ícones | Lucide React |
@@ -23,11 +23,11 @@ Sem backend Node em produção: o build é 100% estático e os `.php` sobem junt
 
 ```bash
 npm install
-npm run dev                        # frontend em http://localhost:5173
+npm run dev                        # frontend em http://localhost:4321
 php -S localhost:8001 -t public    # backend PHP local (necessário pros formulários funcionarem)
 ```
 
-O `vite.config.ts` já proxeia `/api/*` para `localhost:8001` em dev. Sem o servidor PHP rodando, os formulários retornam erro de rede (comportamento esperado, não é bug).
+O `astro.config.mjs` já proxeia `/api/*` para `localhost:8001` em dev. Sem o servidor PHP rodando, os formulários retornam erro de rede (comportamento esperado, não é bug).
 
 ```bash
 npm run build      # build de produção em /dist
@@ -51,25 +51,29 @@ Os `.csv` são gitignorados (dados pessoais reais) e bloqueados por `.htaccess` 
 
 ```
 src/
- ├── assets/            # imagens, ícones e fontes estáticas
- ├── components/
- │    ├── layout/        # Header, Footer, Navbar, Drawer mobile, TopBar, ScrollToTop, popups...
- │    ├── ui/             # Button, Input, Select, Modal, Accordion, SystemCard, TriangleDivider...
- │    ├── sections/       # Hero, ProductsSection, NossoSistema, PartnersMarquee, FaqSection...
- │    └── forms/          # LeadForm, ContatoForm, OuvidoriaForm, DenuncieForm
- ├── pages/              # Home, Produtos, Sobre, Parceiros, Contato, Ouvidoria, Denuncie, NotFound
- ├── routes/             # AppRoutes.tsx (lazy loading + code splitting por rota)
- ├── hooks/              # useScrollPosition, useMediaQuery, useDisclosure, useScrollSpy...
+ ├── assets/            # fontes estáticas (self-hosted, o resto de imagem mora em public/images)
+ ├── components/        # Header, Footer, Navbar, Button, LeadForm, ProductsSection... (flat, 1 nível)
+ ├── layouts/           # BaseLayout.astro — <head>/SEO, Header/Footer, popups globais
+ ├── pages/              # roteamento por arquivo: index/sobre/parceiros/contato/ouvidoria/denuncie/produtos.astro + 404.astro
+ ├── hooks/              # useScrollPosition, useDisclosure, useScrollSpy, useLockBodyScroll...
  ├── services/           # leadService.ts — fetch para public/api/*.php
- ├── data/               # conteúdo estático tipado (produtos, sistemas, bancos, footer, FAQ...)
+ ├── data/               # conteúdo estático tipado (produtos, sistemas, bancos, footer...)
  ├── types/              # tipos compartilhados
  ├── utils/               # masks (telefone), schemas Zod, cn()
- └── styles/             # index.css (tokens, base, componentes Tailwind)
+ └── styles/             # global.css (tokens, base, componentes Tailwind, fontes)
 
 public/
  ├── api/                # scripts PHP (leads, contato, ouvidoria, denúncia) + .htaccess
+ ├── images/             # imagens do site (logos, banners, ícones de bancos)
+ ├── .htaccess           # ErrorDocument 404 -> /404.html
  └── ...                 # favicon, og-image, robots.txt, sitemap.xml
 ```
+
+Cada componente React só hidrata no cliente quando precisa: sem `client:*` para
+seções puramente estáticas (sem framer-motion/interatividade), `client:visible`
+para animação/interação que só importa depois que a seção entra na viewport, e
+`client:load` só para o essencial acima da dobra (Header, o formulário de
+captura do Hero).
 
 ## Documentação adicional
 

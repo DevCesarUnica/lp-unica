@@ -1,0 +1,89 @@
+---
+import { Header } from '../components/Header.tsx';
+import { Footer } from '../components/Footer.tsx';
+import { WhatsappButton } from '../components/WhatsappButton.tsx';
+import { AnecPopup } from '../components/AnecPopup.tsx';
+import { CookieConsent } from '../components/CookieConsent.tsx';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const currentPath = Astro.url.pathname;
+const fullTitle = `${title} | Única Promotora`;
+const canonicalUrl = `https://unicapromotora.com.br${currentPath}`;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#D5040C" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="crédito consignado, FGTS, promotora de crédito, empréstimo, cartão consignado, seguro prestamista, Única Promotora" />
+    <meta name="author" content="Única Promotora" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Única Promotora" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Única Promotora",
+        "url": "https://unicapromotora.com.br/",
+        "logo": "https://unicapromotora.com.br/favicon.png",
+        "image": "https://unicapromotora.com.br/og-image.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "R. Rio de Janeiro, 600, Sala 401 a 408 - Centro",
+          "addressLocality": "Belo Horizonte",
+          "addressRegion": "MG",
+          "postalCode": "30160-041",
+          "addressCountry": "BR"
+        },
+        "telephone": "+55-31-2116-5020",
+        "email": "contato@unicapromotora.com.br"
+      }
+    </script>
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col">
+      <!-- Sem ScrollToTop: numa MPA real, cada navegação já é um carregamento novo de
+           página, então o navegador cuida disso nativamente (inclusive rolagem de
+           âncora com scroll-margin, sem hook nenhum). -->
+      <Header currentPath={currentPath} client:load />
+      <main id="main-content" class="flex-1">
+        <slot />
+      </main>
+      <Footer />
+      <WhatsappButton client:idle />
+      <AnecPopup client:idle />
+      <CookieConsent client:idle />
+    </div>
+  </body>
+</html>

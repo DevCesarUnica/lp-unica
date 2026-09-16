@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { DenuncieHero } from '../components/DenuncieHero.tsx';
+import { DenuncieContent } from '../components/DenuncieContent.tsx';
+---
+
+<BaseLayout
+  title="Canal de Denúncias"
+  description="Canal de denúncias sigiloso da Única Promotora para reportar condutas antiéticas, fraudes ou desvios de conduta."
+>
+  <DenuncieHero />
+  <DenuncieContent client:visible />
+</BaseLayout>

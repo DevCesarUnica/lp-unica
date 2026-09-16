@@ -5,7 +5,7 @@ import {
   InstagramIcon,
   LinkedinIcon,
   WhatsappIcon,
-} from '../components/ui/SocialIcons';
+} from '../components/SocialIcons';
 
 export const TRABALHE_CONOSCO_URL = 'https://forms.gle/nk5JjHSgHQUt8e8CA';
 export const DADOS_TITULARIDADE_URL =

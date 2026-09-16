@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ContatoHero } from '../components/ContatoHero.tsx';
+import { ContatoContent } from '../components/ContatoContent.tsx';
+---
+
+<BaseLayout
+  title="Contato"
+  description="Fale com a Única Promotora. Estamos prontos para ajudar você a encontrar a melhor solução financeira."
+>
+  <!-- Sem client:*: só texto, sem nenhuma animação no componente original. -->
+  <ContatoHero />
+
+  <!-- Hidratada: fade-in dos dois blocos (AnimatedSection) + formulário real
+       (React Hook Form + Zod), que precisa estar interativo pra validar e enviar. -->
+  <ContatoContent client:visible />
+</BaseLayout>

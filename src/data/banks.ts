@@ -1,55 +1,32 @@
 import type { PartnerBank } from '../types';
 
-import bbMais from '../assets/images/bb-mais.png';
-import itau from '../assets/images/itau-1.png';
-import bmg from '../assets/images/bmg.png';
-import daycoval from '../assets/images/daycoval.png';
-import bancoPan from '../assets/images/banco-pan.png';
-import santander from '../assets/images/santander-1.png';
-import banrisul from '../assets/images/banrisul-1.png';
-import safra from '../assets/images/safra.png';
-import facta from '../assets/images/facta.png';
-import c6 from '../assets/images/c6-consig.png';
-import inbursa from '../assets/images/inbursa_unica.png';
-import brb from '../assets/images/BRB-1.png';
-import cba from '../assets/images/CBA-1.png';
-import crefisa from '../assets/images/crefisa-1.png';
-import digio from '../assets/images/digio.png';
-import nbc from '../assets/images/nbc.png';
-import picpay from '../assets/images/picpay.png';
-import senff from '../assets/images/senff.png';
-import parana from '../assets/images/parana.png';
-import cdc from '../assets/images/CDC.png';
-import capital from '../assets/images/Logo-Capital.png';
-import bancoP from '../assets/images/logo-banner-banco-p.png';
-import agibank from '../assets/images/Agibank_preferencial.svg.png';
-import queroMais from '../assets/images/QUERO-MAIS_.png';
-import ole from '../assets/images/ole-logo.png';
-
+// Caminhos de string direto pra /public (não import ESM) — Astro trata import de
+// imagem como objeto ({src, width, height}), não string, o que quebrava o <img src>.
+// Mesmo padrão já usado nos outros componentes do piloto (Header, Footer etc.).
 export const partnerBanks: PartnerBank[] = [
-  { name: 'BB Mais - Banco do Brasil', logo: bbMais },
-  { name: 'Itaú Consignado', logo: itau },
-  { name: 'Banco BMG', logo: bmg },
-  { name: 'Banco Daycoval', logo: daycoval },
-  { name: 'Banco Pan', logo: bancoPan },
-  { name: 'Santander', logo: santander },
-  { name: 'Banco Banrisul', logo: banrisul },
-  { name: 'Safra Financeira', logo: safra },
-  { name: 'Facta Financeira', logo: facta },
-  { name: 'C6 Consig', logo: c6 },
-  { name: 'Inbursa', logo: inbursa },
-  { name: 'BRB', logo: brb },
-  { name: 'CBA - Caixa Aqui', logo: cba },
-  { name: 'Crefisa', logo: crefisa },
-  { name: 'Digio', logo: digio },
-  { name: 'NBC Bank', logo: nbc },
-  { name: 'PicPay', logo: picpay },
-  { name: 'Senff', logo: senff },
-  { name: 'Paraná Banco', logo: parana },
-  { name: 'CDC', logo: cdc },
-  { name: 'Capital Consig', logo: capital },
-  { name: 'Banco P', logo: bancoP },
-  { name: 'Agibank', logo: agibank },
-  { name: 'Quero+', logo: queroMais },
-  { name: 'Olé Consignado', logo: ole },
+  { name: 'BB Mais - Banco do Brasil', logo: '/images/banks/bb-mais.png' },
+  { name: 'Itaú Consignado', logo: '/images/banks/itau-1.png' },
+  { name: 'Banco BMG', logo: '/images/banks/bmg.png' },
+  { name: 'Banco Daycoval', logo: '/images/banks/daycoval.png' },
+  { name: 'Banco Pan', logo: '/images/banks/banco-pan.png' },
+  { name: 'Santander', logo: '/images/banks/santander-1.png' },
+  { name: 'Banco Banrisul', logo: '/images/banks/banrisul-1.png' },
+  { name: 'Safra Financeira', logo: '/images/banks/safra.png' },
+  { name: 'Facta Financeira', logo: '/images/banks/facta.png' },
+  { name: 'C6 Consig', logo: '/images/banks/c6-consig.png' },
+  { name: 'Inbursa', logo: '/images/banks/inbursa_unica.png' },
+  { name: 'BRB', logo: '/images/banks/BRB-1.png' },
+  { name: 'CBA - Caixa Aqui', logo: '/images/banks/CBA-1.png' },
+  { name: 'Crefisa', logo: '/images/banks/crefisa-1.png' },
+  { name: 'Digio', logo: '/images/banks/digio.png' },
+  { name: 'NBC Bank', logo: '/images/banks/nbc.png' },
+  { name: 'PicPay', logo: '/images/banks/picpay.png' },
+  { name: 'Senff', logo: '/images/banks/senff.png' },
+  { name: 'Paraná Banco', logo: '/images/banks/parana.png' },
+  { name: 'CDC', logo: '/images/banks/CDC.png' },
+  { name: 'Capital Consig', logo: '/images/banks/Logo-Capital.png' },
+  { name: 'Banco P', logo: '/images/banks/logo-banner-banco-p.png' },
+  { name: 'Agibank', logo: '/images/banks/Agibank_preferencial.svg.png' },
+  { name: 'Quero+', logo: '/images/banks/QUERO-MAIS_.png' },
+  { name: 'Olé Consignado', logo: '/images/banks/ole-logo.png' },
 ];
