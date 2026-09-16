@@ -9,18 +9,18 @@ import type { SystemBrand } from '../types';
 function BrandBadge({ brand }: { brand: SystemBrand }) {
   if (brand.logo) {
     return (
-      <div className="flex h-20 items-center rounded-full border border-black/10 bg-white px-7 shadow-soft">
-        <img src={brand.logo} alt={brand.name} className="h-14 w-auto object-contain" />
+      <div className="flex h-36 items-center px-6">
+        <img src={brand.logo} alt={brand.name} className={brand.logoClassName ?? 'h-24 w-auto object-contain'} />
       </div>
     );
   }
 
   return (
-    <div className="flex items-center gap-2.5 rounded-full border border-black/10 bg-white px-5 py-2.5 shadow-soft">
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E30613] font-heading text-[11px] font-bold text-white">
+    <div className="flex h-32 items-center gap-4 rounded-full border border-black/10 bg-white px-10 shadow-soft">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E30613] font-heading text-base font-bold text-white">
         {brand.name.charAt(0)}
       </span>
-      <span className="font-heading text-sm font-bold text-[#111111]">{brand.name}</span>
+      <span className="font-heading text-2xl font-bold text-[#111111]">{brand.name}</span>
     </div>
   );
 }
