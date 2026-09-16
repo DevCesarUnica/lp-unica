@@ -83,6 +83,18 @@ export interface SacContact {
   deficient?: string;
 }
 
+export interface InternalTool {
+  name: string;
+  description: string;
+  href: string;
+  icon: IconComponent;
+}
+
+export interface InternalToolCategory {
+  label: string;
+  tools: InternalTool[];
+}
+
 export const brazilianStates = [
   'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO',
   'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI',

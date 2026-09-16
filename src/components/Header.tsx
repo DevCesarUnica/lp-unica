@@ -1,6 +1,7 @@
 import { Menu } from 'lucide-react';
 import { TopBar } from './TopBar';
 import { Navbar } from './Navbar';
+import { InternalToolsMenu } from './InternalToolsMenu';
 import { MobileMenu } from './MobileMenu';
 import { Container } from './Container';
 import { Drawer } from './Drawer';
@@ -58,7 +59,10 @@ export function Header({ currentPath }: HeaderProps) {
                 className="hidden h-[82px] w-auto lg:block"
               />
             </a>
-            <Navbar currentPath={currentPath} />
+            <div className="flex items-center gap-3">
+              <Navbar currentPath={currentPath} />
+              <InternalToolsMenu />
+            </div>
 
             <button
               type="button"

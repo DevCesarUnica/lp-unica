@@ -3,15 +3,20 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll';
+import { cn } from '../utils/cn';
 
 interface DrawerProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
   side?: 'left' | 'right';
+  // MobileMenu só existe em telas pequenas (o Navbar de desktop cobre o resto);
+  // outros usos do Drawer (ex.: painel de ferramentas internas) precisam do
+  // mesmo drawer em qualquer largura de tela.
+  desktopHidden?: boolean;
 }
 
-export function Drawer({ isOpen, onClose, children, side = 'right' }: DrawerProps) {
+export function Drawer({ isOpen, onClose, children, side = 'right', desktopHidden = true }: DrawerProps) {
   useLockBodyScroll(isOpen);
 
   // Astro faz uma passada de SSR mesmo pra componentes client:load — sem esse guard,
@@ -21,7 +26,7 @@ export function Drawer({ isOpen, onClose, children, side = 'right' }: DrawerProp
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] lg:hidden">
+        <div className={cn('fixed inset-0 z-[100]', desktopHidden && 'lg:hidden')}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
