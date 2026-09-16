@@ -35,7 +35,7 @@ export const systemTools: SystemTool[] = [
 
 // As 5 ferramentas pertencem a 3 marcas/plataformas parceiras exibidas no rodapé da seção.
 export const systemBrands: SystemBrand[] = [
-  { slug: 'astor', name: 'Astor' },
+  { slug: 'astor', name: 'Astor', logo: '/images/systems/astor.png' },
   { slug: 'ultra-facil', name: 'Ultra Fácil' },
   { slug: 'unica-mais', name: 'Única Mais' },
 ];

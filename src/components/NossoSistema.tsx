@@ -4,14 +4,23 @@ import { SystemCard } from './SystemCard';
 import { TriangleDivider } from './TriangleDivider';
 import { AnimatedSection, staggerContainer } from './AnimatedSection';
 import { systemBrands, systemTools } from '../data/sistemas';
+import type { SystemBrand } from '../types';
 
-function BrandBadge({ name }: { name: string }) {
+function BrandBadge({ brand }: { brand: SystemBrand }) {
+  if (brand.logo) {
+    return (
+      <div className="flex h-20 items-center rounded-full border border-black/10 bg-white px-7 shadow-soft">
+        <img src={brand.logo} alt={brand.name} className="h-14 w-auto object-contain" />
+      </div>
+    );
+  }
+
   return (
     <div className="flex items-center gap-2.5 rounded-full border border-black/10 bg-white px-5 py-2.5 shadow-soft">
       <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E30613] font-heading text-[11px] font-bold text-white">
-        {name.charAt(0)}
+        {brand.name.charAt(0)}
       </span>
-      <span className="font-heading text-sm font-bold text-[#111111]">{name}</span>
+      <span className="font-heading text-sm font-bold text-[#111111]">{brand.name}</span>
     </div>
   );
 }
@@ -74,7 +83,7 @@ export function NossoSistema() {
           </span>
           <div className="flex flex-wrap items-center justify-center gap-4">
             {systemBrands.map((brand) => (
-              <BrandBadge key={brand.slug} name={brand.name} />
+              <BrandBadge key={brand.slug} brand={brand} />
             ))}
           </div>
         </AnimatedSection>

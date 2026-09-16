@@ -43,6 +43,7 @@ export interface SystemTool {
 export interface SystemBrand {
   slug: string;
   name: string;
+  logo?: string;
 }
 
 export interface PartnerBank {
