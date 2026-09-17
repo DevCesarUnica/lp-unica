@@ -27,7 +27,7 @@ function BrandBadge({ brand }: { brand: SystemBrand }) {
 
 export function NossoSistema() {
   return (
-    <section className="bg-[#F4F4F4]">
+    <section id="sistemas" className="scroll-mt-32 bg-[#F4F4F4]">
       <TriangleDivider />
 
       <Container className="py-16 md:py-24">

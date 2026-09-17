@@ -89,14 +89,13 @@ const info: Record<string, Omit<Banco, 'id' | 'nome' | 'logo'>> = {
     ],
     horario: 'Atendimento disponível 24h, todos os dias da semana.',
   },
-  'Safra Financeira': {
-    site: 'https://www.safra.com.br',
+  'Banco Alfa': {
+    site: 'https://www.alfanet.com.br',
     descricao: 'Crédito consignado e financeiro com atendimento especializado a correspondentes.',
     canais: [
-      { label: 'SAC', valor: '0800 772 5755' },
-      { label: 'Cancelamento', valor: '(11) 2650-9999' },
+      { label: 'SAC (capitais e grandes centros)', valor: '3003 9039' },
+      { label: 'SAC (demais localidades)', valor: '0800 722 9039' },
     ],
-    horario: 'Atendimento de 2ª a 6ª, das 9h às 19h.',
   },
   'Facta Financeira': {
     site: 'https://www.facta.com.br',
@@ -142,11 +141,6 @@ const info: Record<string, Omit<Banco, 'id' | 'nome' | 'logo'>> = {
   'NBC Bank': {
     descricao: 'Parceiro para linhas de consignado e crédito pessoal.',
   },
-  PicPay: {
-    site: 'https://www.picpay.com',
-    descricao: 'Carteira digital com linha de crédito consignado integrada ao app.',
-    canais: [{ label: 'SAC', valor: '0800 025 8000' }],
-  },
   Senff: {
     descricao: 'Financeira parceira para consignado e crédito pessoal.',
     canais: [{ label: 'SAC', valor: '0800 595 0595' }],
@@ -164,7 +158,7 @@ const info: Record<string, Omit<Banco, 'id' | 'nome' | 'logo'>> = {
       { label: 'WhatsApp', valor: '(31) 3157-038' },
     ],
   },
-  'Capital Consig': {
+  'Agora Consig': {
     descricao: 'Consignado para servidores públicos com atendimento via correspondente.',
     canais: [
       { label: 'SAC', valor: '(11) 4210-2496 / 4619-0717 / 4673-0711' },
@@ -179,15 +173,6 @@ const info: Record<string, Omit<Banco, 'id' | 'nome' | 'logo'>> = {
       { label: 'Central', valor: '(11) 3299-2000' },
     ],
   },
-  Agibank: {
-    site: 'https://www.agibank.com.br',
-    descricao: 'Banco digital com conta, cartão e crédito consignado integrados.',
-    canais: [
-      { label: 'SAC', valor: '0800 730 0999' },
-      { label: 'Central Consignado/Relacionamento', valor: '3004 2221 ou 0800 602 0022' },
-    ],
-    horario: 'SAC disponível 24h.',
-  },
   'Quero+': {
     descricao: 'Plataforma parceira para consulta e contratação de crédito consignado.',
     canais: [
@@ -195,14 +180,6 @@ const info: Record<string, Omit<Banco, 'id' | 'nome' | 'logo'>> = {
       { label: 'SAC Cartões', valor: '0800 880 6158' },
     ],
     horario: 'SAC: Seg a Sex, 8h às 19h, Sáb 8h às 14h. SAC Cartões: 24h.',
-  },
-  'Olé Consignado': {
-    site: 'https://www.ole.com.br',
-    descricao: 'Consignado (joint venture Bradesco + Banco do Brasil) com foco em INSS e servidores públicos.',
-    canais: [
-      { label: 'SAC / Empréstimos', valor: '0800 726 7454' },
-      { label: 'Cartão Consignado', valor: '0800 726 4551' },
-    ],
   },
 };
 

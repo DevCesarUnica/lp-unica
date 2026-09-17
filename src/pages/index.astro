@@ -26,10 +26,10 @@ import { ProductsSection } from '../components/ProductsSection.tsx';
   <!-- Hidratada: clique pra abrir vídeo em modal + ESC pra fechar. -->
   <UnicaShorts client:visible />
 
-  <!-- Hidratada: cards com fade-in em cascata (Framer Motion). -->
-  <NossoSistema client:visible />
-
   <!-- Sem client:*: grid de cards 100% estático, sem nenhuma interação/animação
        no componente original. -->
   <ProductsSection />
+
+  <!-- Hidratada: cards com fade-in em cascata (Framer Motion). -->
+  <NossoSistema client:visible />
 </BaseLayout>

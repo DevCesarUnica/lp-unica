@@ -26,6 +26,7 @@ export const POLICY_URLS = {
 export const mainNav: NavItem[] = [
   { label: 'Home', href: '/#parceirounica' },
   { label: 'Produtos', href: '/#produtos' },
+  { label: 'Nossos Sistemas', href: '/#sistemas' },
   { label: 'Bancos Parceiros', href: '/#parceiros' },
   { label: 'Trabalhe Conosco', href: TRABALHE_CONOSCO_URL, external: true },
   { label: 'Contato', href: '/' },

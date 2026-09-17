@@ -17,7 +17,7 @@ const activeItemCls = 'before:scale-100 before:opacity-100';
 
 // ids em ordem de topo a baixo na Home — usados pelo scroll-spy para saber em
 // qual seção o usuário está de fato, em vez de confiar na hash.
-const SPY_IDS = ['produtos', 'parceiros', 'blog'];
+const SPY_IDS = ['produtos', 'sistemas', 'parceiros', 'blog'];
 
 interface NavbarProps {
   /**
