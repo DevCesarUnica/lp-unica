@@ -37,10 +37,5 @@ export const systemTools: SystemTool[] = [
 export const systemBrands: SystemBrand[] = [
   { slug: 'astor', name: 'Astor', logo: '/images/systems/astor.png' },
   { slug: 'ultra-facil', name: 'Ultra Fácil', logo: '/images/systems/ultra-facil.png' },
-  {
-    slug: 'unica-mais',
-    name: 'Única Mais',
-    logo: '/images/systems/unica-mais.png',
-    logoClassName: 'h-32 w-auto object-contain',
-  },
+  { slug: 'unica-mais', name: 'Única Mais', logo: '/images/systems/unica-mais.png' },
 ];

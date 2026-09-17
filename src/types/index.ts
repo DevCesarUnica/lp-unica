@@ -44,7 +44,6 @@ export interface SystemBrand {
   slug: string;
   name: string;
   logo?: string;
-  logoClassName?: string;
 }
 
 export interface PartnerBank {
