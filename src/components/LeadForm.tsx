@@ -200,7 +200,7 @@ export function LeadForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="mt-4 min-h-[40px] rounded-[3px] bg-primary px-[24px] text-[15px] font-normal uppercase leading-none text-white transition-colors hover:bg-white hover:text-primary disabled:opacity-60 md:mt-0 md:self-end md:whitespace-nowrap"
+          className="mt-4 min-h-[40px] rounded-[3px] bg-primary px-[24px] text-[15px] font-normal uppercase leading-none text-white transition-colors hover:bg-white hover:text-primary disabled:opacity-60 md:mb-8 md:mt-0 md:self-end md:whitespace-nowrap"
         >
           {isSubmitting ? 'Enviando...' : 'Enviar'}
         </button>
